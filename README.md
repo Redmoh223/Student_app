@@ -1,21 +1,50 @@
-<<<<<<< HEAD
-# eniad_first_app
 
-A new Flutter project.
+# ENIAD Student App
 
-## Getting Started
+Application mobile développée avec Flutter dans le cadre de mon apprentissage du développement mobile à l'ENIAD.
 
-This project is a starting point for a Flutter application.
+## Objectif
 
-A few resources to get you started if this is your first Flutter project:
+Créer une application destinée aux étudiants de l'ENIAD.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Technologies utilisées
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# Student_App-
->>>>>>> c2e310c05b14e1bad158bb486eb9a908a58321b5
+- Flutter
+- Dart
+- Material Design
+
+## Fonctionnalités actuelles
+
+- Page d'accueil
+- Affichage du titre ENIAD Student App
+- Présentation de l'application
+
+## Installation
+
+Cloner le repository :
+
+```bash
+git clone https://github.com/Redmoh223/Student_app.git
+```
+
+Accéder au projet :
+
+```bash
+cd Student_app
+```
+
+Installer les dépendances :
+
+```bash
+flutter pub get
+```
+
+Lancer l'application :
+
+```bash
+flutter run
+```
+
+## Auteur
+
+Développé dans le cadre de mon apprentissage à l'ENIAD.
