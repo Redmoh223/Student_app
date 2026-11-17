@@ -17,6 +17,24 @@ const students = [
   Student(fullName: 'Salma', filiere: 'IRSI'),
 ];
 
+class InfoBadge extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  const InfoBadge({super.key, required this.icon, required this.text});
+  @override
+  Widget build(BuildContext context) {
+    return const Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: [
+        InfoBadge(icon: Icons.code, text: 'Flutter'),
+        InfoBadge(icon: Icons.storage, text: 'Base de donnees'),
+        InfoBadge(icon: Icons.cloud, text: 'Cloud'),
+      ],
+    );
+  }
+}
+
 class StudentCard extends StatelessWidget {
   final Student student;
   const StudentCard({super.key, required this.student});
@@ -24,9 +42,10 @@ class StudentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: const Icon(Icons.person),
+        leading: const CircleAvatar(child: Icon(Icons.person)),
         title: Text(student.fullName),
         subtitle: Text(student.filiere),
+        trailing: const Icon(Icons.chevron_right),
       ),
     );
   }
@@ -73,16 +92,73 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: const Text('ENIAD etudiant')),
+        appBar: AppBar(
+          leading: const Icon(Icons.school, color: Colors.blue),
+          title: const Text('ENIAD etudiant'),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(16),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth < 600) {
-                return StudentsList(students: students);
-              }
-              return StudentsGrid(students: students);
-            },
+          child: Column(
+            children: [
+              // --- Bloc de bienvenue ajouté ici ---
+              const Row(
+                children: [
+                  CircleAvatar(radius: 28, child: Icon(Icons.person, size: 30)),
+                  SizedBox(width: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Bienvenue',
+                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                      ),
+                      const Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          Chip(
+                            avatar: Icon(Icons.code, size: 18),
+                            label: Text('Flutter'),
+                          ),
+                          Chip(
+                            avatar: Icon(Icons.storage, size: 18),
+                            label: Text('Base de donnees'),
+                          ),
+                          Chip(
+                            avatar: Icon(Icons.cloud, size: 18),
+                            label: Text('Cloud'),
+                          ),
+                          Chip(
+                            avatar: Icon(Icons.security, size: 18),
+                            label: Text('Securite'),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        'Mohamed Goumané', // Modifie avec ton nom si tu veux
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text('GINF'),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20), // Espace entre le bloc et la liste
+              // --- Liste / Grille des étudiants ---
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    if (constraints.maxWidth < 600) {
+                      return StudentsList(students: students);
+                    }
+                    return StudentsGrid(students: students);
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),
