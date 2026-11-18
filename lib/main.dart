@@ -13,7 +13,7 @@ class Student {
 const students = [
   Student(fullName: 'Sara', filiere: 'GINF'),
   Student(fullName: 'Omar', filiere: 'IA'),
-  Student(fullName: 'Yassine', filiere: 'ROC'),
+  Student(fullName: 'Yassinee', filiere: 'ROC'),
   Student(fullName: 'Salma', filiere: 'IRSI'),
 ];
 
